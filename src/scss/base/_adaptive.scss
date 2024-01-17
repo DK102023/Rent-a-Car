@@ -1,0 +1,325 @@
+@media screen and (max-width: 1670px){
+  .main-car img{
+    max-width: 100%; /*calc(100% - 10%);*/
+  }
+}
+@media screen and (max-width: 1600px){
+  /*.row>*{
+    overflow: hidden;
+  }*/
+  .col-lg-4 {
+    overflow: visible;
+  }
+  .main-car {
+    top: -33px !important;
+    left: 147px !important;
+  }
+  .main-car img {
+   /* max-width: calc(100% - 15%);*/
+    transition: top 0.5s ease, left 0.5s ease;
+  }
+}
+/*@media screen and (max-width: 1172px){
+  .car-slider .swiper-button-prev, .car-slider .swiper-button-next {
+    top: 200px;
+  }
+}*/
+@media screen and (max-width: 1140px){
+  .main-car {
+    top: -5px !important;
+    left: 147px !important;
+  }
+  .car-slider .swiper-button-prev, .car-slider .swiper-button-next {
+    top: 268px;
+  }
+  .swiper-button-next.testimonials-next, .swiper-button-prev.testimonials-prev {
+    top: 10px;
+  }
+}
+@media screen and (max-width: 1044px){
+.map-background {
+  top: -100px;
+  z-index: 1;
+  left: -350px;
+}
+}
+@media screen and (max-width: 991px){
+  .benefits-tittle-img {
+    width: 10%;
+    margin-right: 1em;
+  }
+  .benefits-item.ps-5 {
+    padding-left: 0 !important;
+  }
+  .car-slider .swiper-button-prev, .car-slider .swiper-button-next {
+    top: 242px;
+  }
+  h2.car {
+    margin-bottom: -33px;
+  }
+  .row.arenda-action {
+    margin-top: 34px;
+  }
+  .swiper-button-next.testimonials-next, .swiper-button-prev.testimonials-prev {
+    top: 10px;
+  }
+  .map-background {
+    top: -100px;
+    z-index: 1;
+    left: -450px;
+  }
+  /*.map{
+    background-position: -405px -3px;
+  }*/
+}
+@media screen and (max-width: 900px){
+.testimonials-controls .swiper-button-next, .testimonials-controls .swiper-rtl .swiper-button-prev {
+  left: 60% !important;
+
+}
+  .testimonials-controls .swiper-button-prev, .testimonials-controls .swiper-rtl .swiper-button-next {
+    left: 38% !important;
+
+  }
+  .main-car {
+    top: 60px !important;
+    left: 147px !important;
+  }
+  .car-slider .swiper-button-prev, .car-slider .swiper-button-next {
+    top: 220px;
+  }
+  .swiper-button-next.testimonials-next, .swiper-button-prev.testimonials-prev {
+    top: 10px;
+  }
+  /*.map{
+    background-position: -405px -3px;
+  }*/
+  .map-background {
+    top: -25px;
+    z-index: 1;
+    left: -496px
+  }
+}
+@media screen and (max-width: 850px){
+.map-background {
+  top: -100px;
+  z-index: 1;
+  left: -470px;
+}
+  .footer .working-time, .footer .call-us {
+    padding-right: 0px;
+    padding-left: 0px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .scene-1 {
+    padding-bottom: 232px;
+  }
+  h1 {
+    font-size: 53px;
+  }
+  h2 {
+    font-size: 30px !important;
+  }
+  .main-car {
+    top: 118px !important;
+    left: -83px !important;
+  }
+  .main-car img {
+    max-width: 120%;
+  }
+  .map{
+    background-size: cover;
+  }
+  .order-form{
+    margin: 0 !important;
+  }
+  .car-choice {
+  margin: 0 !important;
+}
+  .car-choice img {
+    width: 105%;
+  }
+ .car-slider .swiper-button-prev, .car-slider .swiper-button-next{
+    display: none;
+  }
+  .row.arenda-action {
+    margin-top: 43px;
+  }
+  h2.car {
+    margin-bottom: 26px;
+  }
+  .car-arenda-action {
+    justify-content: start !important;
+  }
+  .map{
+    background-position: -381px 100px
+  }
+  h2.map-header{
+    padding-top:0 !important;
+  }
+  .map-background {
+    width: 300%;
+    /* size: 200px; */
+    top: 32px;
+    z-index: 1;
+    left: -551px;
+  }
+  .text-block {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .night-race{
+    padding-left: 45px !important;
+  }
+  /*.flex-md-row-reverse {
+    flex-direction: row-reverse !important;
+  }*/
+  .footer .working-time, .footer .call-us {
+    padding-right: 0px;
+    padding-left: 40px !important;
+  }
+  .order-second {
+    order: 2!important;
+  }
+  .order-first {
+    order: 1!important;
+  }
+}
+@media screen and (max-width: 730px){
+  .map-background {
+    top: 175px;
+    z-index: 1;
+    left: -423px;
+  }
+  .map-background img{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 640px){
+  .map {
+    padding-bottom: 430px;
+    background-position: -589px 149px;
+  }
+  .benefits-container {
+    padding-bottom: 0;
+    padding-top: 50px;
+  }
+  .main-car {
+    top: 163px !important;
+    left: -83px !important;
+  }
+}
+@media screen and (max-width: 568px) {
+  div#calling{
+    margin-right: 0;
+    margin-bottom: 27px;
+  }
+  .benefits-tittle-img {
+    width: 22%;
+  }
+h1 {
+  font-size: 35px;
+  width: auto;
+}
+}
+@media screen and (max-width: 520px) {
+  .map-background {
+    top: 364px;
+    z-index: 1;
+    left: -267px;
+  }
+    .map-background img {
+      max-width: 900px;
+    }
+  }
+@media screen and (max-width: 480px){
+.map-background {
+  top: 364px;
+  z-index: 1;
+  left: -313px;
+}
+  .footer .working-time, .footer .call-us {
+    padding-left: 40px;
+    width: 100% !important;
+  }
+  .footer .logo {
+    width: 100% !important;
+  }
+  .main-car {
+    top: 171px !important;
+    left: -83px !important;
+  }
+}
+@media screen and (max-width: 440px){
+  .main-car {
+    top: 210px !important;
+    left: -65px !important;
+  }
+
+}
+@media screen and (max-width: 390px){
+  .main-car {
+    top: 243px !important;
+    left: -58px !important;
+  }
+  .map {
+    padding-bottom: 200px;
+    background-position: -589px 149px;
+  }
+  .map-background {
+    top: 278px;
+    z-index: 1;
+    left: -251px;
+  }
+}
+@media screen and (max-width: 360px){
+.map-background {
+  top: 372px;
+  z-index: 1;
+  left: -251px;
+}
+  .car-choice {
+    padding-bottom: 0  !important;
+  }
+}
+@media screen and (max-width: 320px) {
+    .order {
+      background-image: none;
+    }
+    .map{
+      padding-bottom: 250px;
+    }
+    .map-address-lines p{
+      font-size: 14px;
+    }
+    .map-background {
+      width: 300%;
+      top: 226px;
+      z-index: 1;
+      left: -237px;
+    }
+    .map-background img {
+      max-width: 800px;
+    }
+
+    div#contacts{
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    .order .container{
+      padding: 0 !important;
+    }
+    .main-car {
+      top: 276px !important;
+      left: -50px !important;
+    }
+
+    .footer .call-us{
+      margin-left: 20px !important;}
+    .footer .social {
+      margin-top: 10px !important;
+    }
+
+  }

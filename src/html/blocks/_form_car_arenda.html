@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div class="modal fade" id="CarArenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content car-arenda-form position-relative">
+      <button type="button" class="btn-close ms-auto position-absolute " data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header">
+        <h2 class="car-arenda-form modal-title m-auto mb-5"><span>ЗАКАЖИТЕ ИДЕАЛЬНЫЙ АВТОМОБИЛЬ</span> УЖЕ СЕГОДНЯ</h2>
+
+      </div>
+      <div class="modal-body">
+        <form class="form" id="form">
+          <div class="form-text">Детали проката</div>
+          <div class="form-date">
+            <p>1. Данные заявки</p>
+
+
+
+            <select name="auto" id="input-auto" class="form-control form-select" required>
+              <option value="" disabled="" selected="">Выберите машину</option>
+              <option value="0">Aventador SVJ</option>
+              <option value="1">Aventador J</option>
+              <option value="2">Aventador LP740-4 S</option>
+              <option value="3">Aventador LP750 SuperVeloce</option>
+            </select>
+            <span class="error mt-2" id="carList-error" style="display: none;" >Выберите машину</span>
+            <div class=" d-flex time-car">
+              <div class="input-wrapper col-6">
+                <input type="text" class="input-time form-control mt-2 me-2" placeholder="Начало" id="startDate" required>
+                <span class="error mt-2" id="startDate-error" style="display: none;">Введите время начала аренды</span>
+              </div>
+              <div class="input-wrapper col-6">
+                <input type="text" class="input-time form-control mt-2 ms-2" placeholder="Окончание" id="endDate" required>
+                <span class="error mt-2" id="endDate-error" style="display: none;">Введите время окончания аренды</span>
+              </div>
+
+
+            </div>
+
+            <select name="point" id="input-point" class="form-control form-select mb-2" required>
+              <option value="" disabled="" selected="">Откуда поедете</option>
+              <option value="1">Монако</option>
+              <option value="2">Ницца</option>
+              <option value="3">Марсель</option>
+            </select>
+            <span class="error" id="inputPoint-error" style="display: none;">Выберите точку отправления</span>
+          </div>
+          <div class="form-info">
+            <p>2. Личная информация</p>
+            <input name="name" type="text" id="input-name" min="4" max="100" pattern="^[A-Za-zА-Яа-яЁё]+$" title="Пожалуйста введи строку, состоящую только из букв!" required placeholder="Ваше имя" class="form-control mt-2">
+            <span class="error mt-2" id="tenant-name-error" style="display: none;">Введите ваше имя, используя только буквы</span>
+            <input type="tel" id="input-tel" required placeholder="Ваш телефон" class="form-control  mt-2">
+            <span class="error mt-2" id="tenant-tel-error" style="display: none;">Введите ваш телефон</span>
+            <input type="email" id="input-mail" placeholder="Ваш e-mail" class="form-control mt-2 mb-2 is-invalid" required>
+            <span class="error" id="mail-error" style="display: none;">Введите адрес вашей почты</span>
+          </div>
+          <div class="form-message">
+            <p>3. Сообщение</p>
+            <textarea id="text-message" placeholder="Введите ваше сообщение (не обязательно)" class="form-control"></textarea>
+          </div>
+          <div class="btn d-flex justify-content-center mt-3 mb-3">
+            <button type="button" class="button hvr-shrink btn btn-primary" id="button-request">Отправить заявку</button>
+          </div>
+          <a href="#" class="form-text-confidentially">
+            Предоставляя информацию, вы даете согласие на обработку вашей личной информации в соответствии с нашей
+            политикой конфиденциальности
+          </a>
+          <div class="arrow-right"></div>
+          <div class="arrow-left"></div>
+         <!-- <div class="close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+              <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"></path>
+            </svg>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

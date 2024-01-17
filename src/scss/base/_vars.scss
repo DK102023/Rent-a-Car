@@ -1,0 +1,34 @@
+:root {
+
+	--container-width: 1140px;
+	--container-padding: 15px;
+
+	--font-main: 'Poppins', sans-serif;
+	--font-accent: 'Playfair Display', serif;
+
+
+	--page-bg: #18191b;
+	--text-color: #fff;
+	--accent: #ac182c;
+	--neon-color: #f8e5a5;
+
+    --laptop-size: 1199px;
+	--tablet-size: 959px;
+	--mobile-size: 599px;
+
+	--button-text-color: #000;
+	--button-background-color: #ffde46;
+
+	--color-svg: #ab975f;
+
+	--modal-background: #18191a;
+	--modal-input: #aba7a3;
+	--modal-input-border:#454545;
+	--modal-button-hover-background: #d2b528;
+}
+
+
+.light {
+	--page-bg: #fff;
+	--text-color: #000;
+}

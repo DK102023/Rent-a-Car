@@ -1,0 +1,120 @@
+
+button.btn-close {
+  background-color:  var(--text-color);
+  top: 23px;
+  right: 15px;
+  opacity: 1;
+}
+.modal-content.car-arenda-form {
+  z-index: 100;
+  background: var(--modal-background)  !important;
+  padding: 50px 60px;
+  max-width: 502px;
+  position: relative;
+  box-sizing: content-box;
+}
+h2.car-arenda-form.modal-title {
+  color: var(--text-color);
+  margin-top: 20px;
+  margin-bottom: 52px;
+  font-size: 20px;
+  text-align: center;
+}
+div#CarArenda .modal-body{
+  padding: 0;
+}
+div#CarArenda .modal-header{
+  padding: 0;
+  border-bottom: none;
+}
+div#CarArenda .form-text {
+  margin-bottom: 40px;
+  font-family: Roboto,sans-serif;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.form-message textarea,.form-date select,.form-date .time-car input, .form-info input{
+  font-family: Roboto,sans-serif;
+  font-size: 15px;
+  color: var(--modal-input);
+  background: 0 0;
+  border: 1px solid var(--modal-input-border);
+}
+
+ .form-date select {
+  margin-top: 17px;
+  padding: 15px;
+  width: 100%;
+}
+ .form-date .form-info input {
+  padding: 15px;
+  width: 50%;
+}
+.time-car input, flatpickr-input.flatpickr-mobile{
+  padding: 16px;
+}
+.form-info input {
+  padding: 15px;
+  width: 100%;
+}
+ .form-message textarea {
+  padding: 15px;
+  margin-top: 17px;
+  width: 471px;
+  height: 88px;
+}
+ .form .arrow-left,  .form .arrow-right {
+  height: 2px;
+  background:  var(--button-background-color);
+  box-shadow: 1px -1px 12px 1px var(--button-background-color);
+  position: absolute;
+}
+ .form .arrow-right {
+  width: 30px;
+  right: -60px;
+  bottom: -10px;
+}
+.form .arrow-left {
+  width: 30px;
+  left: -60px;
+  top: -79px;
+}
+ a.form-text-confidentially{
+   text-decoration:underline;
+   display: block;
+   font-family: Roboto,sans-serif;
+   font-size: 13px;
+   color: var(--text-color);
+   width: 350px;
+   line-height: 1.616;
+   margin: 0 auto;
+   cursor: pointer
+ }
+button#button-request {
+  min-width: 300px;
+
+}
+select {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--text-color);
+}
+select option, select:focus {
+  padding: 10px;
+  background-color: var(--modal-background);
+  color: var(--text-color);
+}
+input#input-name:focus,input#input-tel:focus,input#input-mail:focus,select:focus{
+  background-color: var(--modal-background) !important;
+  color: var(--text-color) !important;
+}
+.form-date .time-car input::placeholder, .form-info input::placeholder, .form-message textarea::placeholder{
+  color:var(--modal-input);
+}
+.flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
+  cursor: not-allowed;
+  color: rgba(57,57,57,0.3) !important;
+}

@@ -1,0 +1,85 @@
+.pop-up-calling {
+  background: rgba(24, 25, 26, 0.56);
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-up-calling .modal-content {
+  background: var(--modal-background);
+  position: relative;
+  width: auto;
+}
+
+.pop-up-calling .modal-title {
+  font-family: BebasNeue, sans-serif;
+  font-size: 40px;
+  color: #fff;
+  font-weight: 400;
+ /* margin-bottom: 30px;*/
+}
+
+.pop-up-calling .modal-title span {
+  color: var(--neon-color);
+}
+
+.pop-up-calling .close-form-calling {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.pop-up-calling .form-calling-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pop-up-calling .form-calling-input input {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  color: var(--modal-input);
+  background: 0 0;
+  border: 1px solid var(--modal-input-border);
+  padding: 15px;
+  display: block;
+}
+
+.pop-up-calling .form-calling-input .error {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  color: red;
+  display: none;
+}
+
+.pop-up-calling .form-calling-input .button {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  background: var(--button-background-color);
+  text-align: center;
+  cursor: pointer;
+  border: 0;
+  padding: 20px 15px;
+  width: 200px;
+}
+
+.pop-up-calling .form-calling-input .button:hover {
+  background: var(--modal-button-hover-background);
+}
+
+.placeholder-red::placeholder {
+  color: red;
+}
+
+.pop-up-calling .close-form-calling svg path {
+  fill: var(--text-color);
+}
+/*.modal-content {
+  width: auto;
+}*/
+.pop-up-calling .modal-header {
+  border-bottom: none;
+}

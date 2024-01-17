@@ -1,0 +1,29 @@
+<div class="pop-up-calling modal fade" id="callingModal" tabindex="-1" role="dialog" aria-labelledby="callingModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h2 class="modal-title text-nowrap mt-3"><span>ЗАКАЖИТЕ ИДЕАЛЬНЫЙ АВТОМОБИЛЬ</span> УЖЕ СЕГОДНЯ</h2>
+        <button type="button" class="close close-form-calling" data-bs-dismiss="modal" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-calling" id="form-calling">
+          <div class="form-calling-input">
+            <div class="input-wrapper">
+              <input class="me-2" id="name-calling" name="name" type="text" pattern="^[A-Za-zА-Яа-яЁё]+$" title="Пожалуйста введи строку, состоящую только из букв!" required placeholder="Введите имя">
+              <span class="error pt-2" id="name-error">Введите ваше имя</span>
+            </div>
+            <div class="input-wrapper">
+              <input class="me-2" id="tel-calling" name="tel" type="tel" class="form-control" class="form-control" pattern="^\+?[0-9]{1,}$" title="Пожалуйста, введите правильно номер телефона!" required placeholder="Введите телефон">
+              <span class="error pt-2" id="tel-error">Введите ваш телефон</span>
+            </div>
+            <button id="button-calling" type="submit" class="button btn btn-primary">Заказать звонок</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

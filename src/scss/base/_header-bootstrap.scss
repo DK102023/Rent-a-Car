@@ -1,0 +1,81 @@
+/*header.navbar.navbar-expand-md.navbar-light {
+  z-index: 10;
+}*/
+a.nav-link {
+  color: var(--text-color);
+  font-size: 14px;
+}
+a.nav-link:hover {
+  color: var(--neon-color);
+}
+button.navbar-toggler {
+  border: none;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-toggler {
+  border: 2px solid var(--text-color);
+}
+/*.navbar-nav .nav-item {
+  margin-right: 50px;
+}*/
+/*.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}*/
+header {
+  background-color: var(--page-bg);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+ // background-color: #fff; /* Цвет вашего header */
+}
+
+.mobile-menu-container {
+  position: fixed;
+  top: 56px; /* Высота вашего header */
+  width: 100%;
+ // background-color: #fff; /* Цвет вашего header */
+  display: none;
+}
+
+.mobile-menu {
+  padding-top: 20px; /* Вертикальный отступ для пунктов меню */
+}
+
+@media (max-width: 767px) {
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-collapse {
+    padding: 2em;
+    position: fixed;
+    top: 73px;
+    right: 5%;
+    /* width: 100%; */
+    z-index: 999;
+    background-color: #202021;
+  }
+
+  .navbar-toggler.active + .navbar-collapse {
+    display: block;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .navbar-toggler-icon {
+    margin: auto;
+  }
+}

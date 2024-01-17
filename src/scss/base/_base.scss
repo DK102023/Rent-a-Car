@@ -1,0 +1,87 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500,600,700);
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('../../fonts/BebasNeueRegular.woff2') format('woff2'),
+  url('../../fonts/BebasNeueRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  box-sizing: border-box;
+}
+row{
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  //background-color: var(--page-bg);
+  //padding-top: 56px; /* Для учета высоты sticky-хедера */
+  margin: 0;
+  padding: 0;
+
+}
+h1,h2,h4,h5 {
+  font-family: BebasNeue, sans-serif;
+  color: var(--text-color);
+}
+h1 {
+  font-size: 60px;
+  margin-bottom: 53px;
+  font-weight: 400;
+  width: 570px;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 40px;
+  margin-bottom: 53px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+}
+h3 {
+  font-family: Roboto,sans-serif;
+  font-size: 20px;
+  color: var(--text-color);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+a,p,span, li {
+  color: var(--text-color);
+}
+ul{
+  padding: 0;
+}
+ul li{
+  list-style: none;
+}
+.capslock-text {
+  text-transform: uppercase;
+}
+.neon {
+  background:var(--neon-color);
+  box-shadow: 1px -1px 12px 8px rgba(248,229,165,.12);
+}
+
+.button{
+  font-family: Roboto,sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--button-text-color);
+  background:var(--button-background-color);
+  text-align: center;
+  cursor: pointer;
+  width: 242px;
+  border: 0;
+  margin-right: 19px;
+  padding: 17px 0;
+  border-radius: 0;
+}
+/*img {
+  width: 100%;
+}*/
