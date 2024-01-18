@@ -10,7 +10,26 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 
-//let successMessage = $('<div class="success-message"><p>Спасибо, мы свяжемся с вами в ближайшее время!</p></div>');
+function ResponseElement (formid) {
+
+    // Удаление формы
+    /* var modalContent = document.getElementById(formid);
+     modalContent.parentNode.removeChild(formOrder);*/
+    // Получаем элемент контейнера
+    var modalContent = document.getElementById(formid);
+
+    // Очищаем содержимое контейнера
+    modalContent.innerHTML = '';
+
+    // Создаем новый div
+    var newDiv = document.createElement('div');
+    newDiv.innerHTML = '<p>Спасибо, мы свяжемся с вами в ближайшее время!</p><button type="button" class="btn-close ms-auto position-absolute " data-bs-dismiss="modal" aria-label="Close"></button>';
+
+    // Добавляем новый div в контейнер
+    modalContent.appendChild(newDiv);
+
+
+}
 function clearForm(formId) {
     var form = document.getElementById(formId);
 
@@ -42,6 +61,8 @@ function resetModalFormError(){
     invalidElements.forEach((element) => {
         element.classList.remove('is-invalid');
     });
+
+
 }
 
 
@@ -185,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var startDatePicker = flatpickr("#startDate", {
         enableTime: true,
         dateFormat: "Y-m-d ",
+        minDate: "today",
         // Другие опции
     });
 
@@ -281,15 +303,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (response.success) {
                       //  loader.style.display = 'none'; // убираем loader
 
-                        // Удаление формы
-                       /* var formOrder = document.getElementById('form-order');
-                        formOrder.parentNode.removeChild(formOrder);*/
+
 
                         // Добавление блока с успешным сообщением
-                        var successMessage = document.createElement('div');
-                        successMessage.className = 'success-message';
-                        successMessage.innerHTML = '<p>Спасибо за Ваш заказ. Мы скоро свяжемся с Вами!</p>';
-                       // mailForm.appendChild(successMessage);
+                        ResponseElement('form');
                         alert('Форма отправлена');
                     } else {
                         alert('Возникла ошибка при оформлении заказа, позвоните нам и сделайте заказ');
@@ -343,12 +360,14 @@ document.addEventListener('DOMContentLoaded', function () {
             tenantTel.classList.remove('is-invalid');
         }
         if(!tenantEmail.value.match(emailPattern)){
-        //if (!emailPattern.test(tenantEmail)) {
-        /*if (!tenantEmail.checkValidity()){*/
+
             tenantEmailError.style.display = 'block';
             tenantEmail.classList.add('is-invalid');
             errorFlag--;
             //console.log(tenantEmail.value);
+        }else {
+            tenantEmailError.style.display = 'none';
+            tenantEmail.classList.remove('is-invalid');
         }
         // Проверка условия валидации для всех полей
         if ( errorFlag === 7 ) {
@@ -400,15 +419,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (response.success) {
                         //  loader.style.display = 'none'; // убираем loader
 
-                        // Удаление формы
-                        /* var formOrder = document.getElementById('form-order');
-                         formOrder.parentNode.removeChild(formOrder);*/
+
 
                         // Добавление блока с успешным сообщением
-                        var successMessage = document.createElement('div');
-                        successMessage.className = 'success-message';
-                        successMessage.innerHTML = '<p>Спасибо за Ваш заказ. Мы скоро свяжемся с Вами!</p>';
-                        // mailForm.appendChild(successMessage);
+                        ResponseElement ('form-calling');
                         alert('Форма обратного звонка отправлена');
                     } else {
                         alert('Возникла ошибка при отправке, позвоните нам и сделайте заказ');
@@ -471,28 +485,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+
+    document.getElementById('calling-button').addEventListener('click', function (event) {
+        //event.preventDefault();
+        resetModalFormError();
+        // Получаем текст из элемента с идентификатором arenda-info
+        var carInfoText = document.getElementById('arenda-info').querySelector('p').textContent.trim();
+
+        // Отсекаем слово "Lamborghini" и крайние пробелы
+        var trimmedText = carInfoText.replace('Lamborghini', '').trim();
+        console.log(trimmedText);
+        // Получаем элемент выпадающего списка input-auto
+        var inputAuto = document.getElementById('input-auto');
+
+        // Находим соответствующий элемент в выпадающем списке и устанавливаем его как выбранный
+        for (var i = 0; i < inputAuto.options.length; i++) {
+            if (inputAuto.options[i].text === trimmedText) {
+                inputAuto.selectedIndex = i;
+                break;
+            }
+        }
+
+
+
+
+
 });
 
 new WOW().init();
 
 
-document.getElementById('calling-button').addEventListener('click', function (event) {
-    //event.preventDefault();
-    // Получаем текст из элемента с идентификатором arenda-info
-    var carInfoText = document.getElementById('arenda-info').querySelector('p').textContent.trim();
 
-    // Отсекаем слово "Lamborghini" и крайние пробелы
-    var trimmedText = carInfoText.replace('Lamborghini', '').trim();
-    console.log(trimmedText);
-    // Получаем элемент выпадающего списка input-auto
-    var inputAuto = document.getElementById('input-auto');
-
-    // Находим соответствующий элемент в выпадающем списке и устанавливаем его как выбранный
-    for (var i = 0; i < inputAuto.options.length; i++) {
-        if (inputAuto.options[i].text === trimmedText) {
-            inputAuto.selectedIndex = i;
-            break;
-        }
-    }
 });
 
