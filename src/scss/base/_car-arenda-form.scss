@@ -118,3 +118,21 @@ input#input-name:focus,input#input-tel:focus,input#input-mail:focus,select:focus
   cursor: not-allowed;
   color: rgba(57,57,57,0.3) !important;
 }
+
+span.flatpickr-day {
+  color: #fff;
+}
+span.flatpickr-day.flatpickr-disabled {
+  opacity: .4;
+  color: #fff !important;
+}
+.flatpickr-months .flatpickr-prev-month svg, .flatpickr-months .flatpickr-next-month svg {
+  fill: aliceblue;
+}
+
+.flatpickr-months, .flatpickr-rContainer  {
+  background: #18191a
+}
+select.flatpickr-monthDropdown-months {
+  color: white !important;
+}
