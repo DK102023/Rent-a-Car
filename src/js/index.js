@@ -14,7 +14,34 @@ var respEl = 1;
 // Объект для хранения данных по формам
 var formStorage = {};
 
-function ResponseElement(formId, flag) {
+//date-pickers
+// Глобальные переменные для сохранения состояния flatpickr
+var startDatePicker, endDatePicker;
+
+// Функция для инициализации flatpickr
+function initializeFlatpickr() {
+    startDatePicker = flatpickr("#startDate", {
+        enableTime: true,
+        dateFormat: "Y-m-d ",
+        minDate: "today",
+        // Другие опции
+    });
+
+    endDatePicker = flatpickr("#endDate", {
+        enableTime: true,
+        dateFormat: "Y-m-d ",
+        minDate: new Date(),
+        // Другие опции
+    });
+
+    // Установка обработчика события изменения значения startDate
+    startDatePicker.config.onChange.push(function (selectedDates, dateStr) {
+        endDatePicker.config.minDate = dateStr;
+    });
+}
+initializeFlatpickr();
+
+/*function ResponseElement(formId, flag) {
     // Получаем элемент контейнера
     var modalContent = document.getElementById(formId);
 
@@ -37,9 +64,44 @@ function ResponseElement(formId, flag) {
         var savedContent = formStorage[formId];
         if (savedContent !==undefined) {
             modalContent.innerHTML = savedContent;
+            initializeFlatpickr();
         }
     }
-}
+}*/
+function ResponseElement(formId, flag) {
+    // Получаем элемент контейнера
+    var modalContent = document.getElementById(formId);
+
+
+
+    if (flag === 1) {
+        // Скрываем содержимое контейнера
+        if (modalContent) {
+            modalContent.querySelector('.main-content').classList.add('d-none');
+        }
+
+        // Создаем новый div
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = '<p class="text-center thank-you">Спасибо, мы свяжемся с вами в ближайшее время!</p>';
+
+        // Добавляем новый div в контейнер
+        modalContent.appendChild(newDiv);
+
+
+    } else if (flag === 0) {
+        // Восстанавливаем скрытое содержимое формы
+        if (modalContent) {
+            modalContent.querySelector('.main-content').classList.remove('d-none');
+        }
+        // Удаляем благодарственное сообщение, если оно уже существует
+        var thankYouMessage = modalContent.querySelector('.thank-you');
+        if (thankYouMessage) {
+            thankYouMessage.remove();
+        }
+            //initializeFlatpickr();
+        //clearForm(formId);
+        }
+    }
 
 // Обработчик клика на кнопках
 document.querySelectorAll('.btn').forEach(function (button) {
@@ -54,18 +116,32 @@ document.querySelectorAll('.btn').forEach(function (button) {
         }
 
         // Дополнительный код для открытия модального окна, если это необходимо
-      //  var modal = new bootstrap.Modal(document.querySelector(target));
-      //  modal.show();
+        //  var modal = new bootstrap.Modal(document.querySelector(target));
+        //  modal.show();
     });
 });
 
 
 
-function clearForm(formId) {
+
+///
+/*function clearForm(formId) {
     var form = document.getElementById(formId);
 
     if (form) {
         form.reset();
+    }
+}*/
+function clearForm(formId) {
+    var formContainer = document.getElementById(formId);
+
+    if (formContainer) {
+        // Находим элемент <form> внутри родительского контейнера
+        var form = formContainer.querySelector('form');
+
+        if (form) {
+            form.reset();
+        }
     }
 }
 /**/
@@ -218,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.scrollTop = 0;
     }
 
- // Периодическая анимация элемента
+    // Периодическая анимация элемента
     var animatedElement = document.getElementById("animatedElement");
 
     function startBounceAnimation() {
@@ -231,29 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Запускаем анимацию через каждые 5 секунд
     setInterval(startBounceAnimation, 5000);
 
-    //date-pickers
 
-    // Инициализация Flatpickr для startDate
-    var startDatePicker = flatpickr("#startDate", {
-        enableTime: true,
-        dateFormat: "Y-m-d ",
-        minDate: "today",
-        // Другие опции
-    });
-
-    // Инициализация Flatpickr для endDate с использованием minDate
-    var endDatePicker = flatpickr("#endDate", {
-        enableTime: true,
-        dateFormat: "Y-m-d ",
-        minDate: new Date(),  // Устанавливаем минимальную дату
-        // Другие опции
-    });
-
-    // Обработчик изменения значения startDate
-    startDatePicker.config.onChange.push(function (selectedDates, dateStr, instance) {
-        // Устанавливаем минимальную дату для endDate, равную выбранной дате в startDate
-        endDatePicker.set("minDate", dateStr);
-    });
 
 
 
@@ -512,9 +566,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-});
+    });
 
-new WOW().init();
+    new WOW().init();
 
 
 
