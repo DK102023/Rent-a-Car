@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 // Проверяем статус ответа
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Нет сети');
                 }
                 return response.json(); // Преобразуем ответ в JSON
             })
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Код, который выполнится при успешном выполнении запроса
                 if (response.success) {
                     ResponseElement(responseElementId, 1);
-                    alert(successMessage);
+                  //  alert(successMessage);
                 } else {
                     alert('Возникла ошибка, позвоните нам и сделайте заказ');
                 }
@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // Проверка условия валидации для всех полей
         if ( errorFlag === 7 ) {
-            alert('Форма заполнена!');
+            //alert('Форма заполнена!');
             RequestFormSend();
         }
 
