@@ -455,7 +455,6 @@ document.addEventListener('DOMContentLoaded', function () {
             //alert('Форма заполнена!');
             RequestFormSend();
         }
-
     });
 
 
