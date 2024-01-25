@@ -9,32 +9,139 @@ import Inputmask from 'inputmask';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
+//Флашг действия над формой
+var respEl = 1;
+// Объект для хранения данных по формам
+var formStorage = {};
 
-function ResponseElement (formid) {
+//date-pickers
+// Глобальные переменные для сохранения состояния flatpickr
+var startDatePicker, endDatePicker;
 
-    // Удаление формы
-    /* var modalContent = document.getElementById(formid);
-     modalContent.parentNode.removeChild(formOrder);*/
-    // Получаем элемент контейнера
-    var modalContent = document.getElementById(formid);
+// Функция для инициализации flatpickr
+function initializeFlatpickr() {
+    startDatePicker = flatpickr("#startDate", {
+        enableTime: true,
+        dateFormat: "Y-m-d ",
+        minDate: "today",
+        // Другие опции
+    });
 
-    // Очищаем содержимое контейнера
-    modalContent.innerHTML = '';
+    endDatePicker = flatpickr("#endDate", {
+        enableTime: true,
+        dateFormat: "Y-m-d ",
+        minDate: new Date(),
+        // Другие опции
+    });
 
-    // Создаем новый div
-    var newDiv = document.createElement('div');
-    newDiv.innerHTML = '<p>Спасибо, мы свяжемся с вами в ближайшее время!</p><button type="button" class="btn-close ms-auto position-absolute " data-bs-dismiss="modal" aria-label="Close"></button>';
-
-    // Добавляем новый div в контейнер
-    modalContent.appendChild(newDiv);
-
-
+    // Установка обработчика события изменения значения startDate
+    startDatePicker.config.onChange.push(function (selectedDates, dateStr) {
+        endDatePicker.config.minDate = dateStr;
+    });
 }
-function clearForm(formId) {
+initializeFlatpickr();
+
+/*function ResponseElement(formId, flag) {
+    // Получаем элемент контейнера
+    var modalContent = document.getElementById(formId);
+
+    if (flag === 1) {
+        // Очищаем содержимое контейнера и запоминаем его содержимое
+        var savedContent = modalContent.innerHTML;
+        modalContent.innerHTML = '';
+
+        // Создаем новый div
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = '<p class="text-center">Спасибо, мы свяжемся с вами в ближайшее время!</p>';
+
+        // Добавляем новый div в контейнер
+        modalContent.appendChild(newDiv);
+
+        // Сохраняем содержимое для последующего восстановления
+        formStorage[formId] = savedContent;
+    } else if (flag === 0) {
+        // Восстанавливаем сохраненное содержимое формы, если оно существует
+        var savedContent = formStorage[formId];
+        if (savedContent !==undefined) {
+            modalContent.innerHTML = savedContent;
+            initializeFlatpickr();
+        }
+    }
+}*/
+function ResponseElement(formId, flag) {
+    // Получаем элемент контейнера
+    var modalContent = document.getElementById(formId);
+
+
+
+    if (flag === 1) {
+        // Скрываем содержимое контейнера
+        if (modalContent) {
+            modalContent.querySelector('.main-content').classList.add('d-none');
+        }
+
+        // Создаем новый div
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = '<p class="text-center thank-you">Спасибо, мы свяжемся с вами в ближайшее время!</p>';
+
+        // Добавляем новый div в контейнер
+        modalContent.appendChild(newDiv);
+
+
+    } else if (flag === 0) {
+        // Восстанавливаем скрытое содержимое формы
+        if (modalContent) {
+            modalContent.querySelector('.main-content').classList.remove('d-none');
+        }
+        // Удаляем благодарственное сообщение, если оно уже существует
+        var thankYouMessage = modalContent.querySelector('.thank-you');
+        if (thankYouMessage) {
+            thankYouMessage.remove();
+        }
+            //initializeFlatpickr();
+        //clearForm(formId);
+        }
+    }
+
+// Обработчик клика на кнопках
+document.querySelectorAll('.btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var target = this.getAttribute('data-bs-target');
+
+        // Проверка значения атрибута data-bs-target
+        if (target === '#callingModal') {
+            ResponseElement('form-calling', 0);
+        } else if (target === '#CarArenda') {
+            ResponseElement('form', 0);
+        }
+
+        // Дополнительный код для открытия модального окна, если это необходимо
+        //  var modal = new bootstrap.Modal(document.querySelector(target));
+        //  modal.show();
+    });
+});
+
+
+
+
+///
+/*function clearForm(formId) {
     var form = document.getElementById(formId);
 
     if (form) {
         form.reset();
+    }
+}*/
+function clearForm(formId) {
+    var formContainer = document.getElementById(formId);
+
+    if (formContainer) {
+        // Находим элемент <form> внутри родительского контейнера
+        var form = formContainer.querySelector('form');
+
+        if (form) {
+            form.reset();
+        }
     }
 }
 /**/
@@ -187,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.scrollTop = 0;
     }
 
- // Периодическая анимация элемента
+    // Периодическая анимация элемента
     var animatedElement = document.getElementById("animatedElement");
 
     function startBounceAnimation() {
@@ -200,29 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Запускаем анимацию через каждые 5 секунд
     setInterval(startBounceAnimation, 5000);
 
-    //date-pickers
 
-    // Инициализация Flatpickr для startDate
-    var startDatePicker = flatpickr("#startDate", {
-        enableTime: true,
-        dateFormat: "Y-m-d ",
-        minDate: "today",
-        // Другие опции
-    });
-
-    // Инициализация Flatpickr для endDate с использованием minDate
-    var endDatePicker = flatpickr("#endDate", {
-        enableTime: true,
-        dateFormat: "Y-m-d ",
-        minDate: new Date(),  // Устанавливаем минимальную дату
-        // Другие опции
-    });
-
-    // Обработчик изменения значения startDate
-    startDatePicker.config.onChange.push(function (selectedDates, dateStr, instance) {
-        // Устанавливаем минимальную дату для endDate, равную выбранной дате в startDate
-        endDatePicker.set("minDate", dateStr);
-    });
 
 
 
@@ -242,6 +327,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //Main actions
+
+    function sendFormData(formData, formId, successMessage, responseElementId) {
+        // Опции запроса
+        var requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: formData.toString() // Преобразуем данные в строку и отправляем их в теле запроса
+        };
+
+        // Отправляем запрос
+        fetch('https://testologia.site/checkout', requestOptions)
+            .then(response => {
+                // Проверяем статус ответа
+                if (!response.ok) {
+                    throw new Error('Нет сети');
+                }
+                return response.json(); // Преобразуем ответ в JSON
+            })
+            .then(response => {
+                // Код, который выполнится при успешном выполнении запроса
+                if (response.success) {
+                    ResponseElement(responseElementId, 1);
+                  //  alert(successMessage);
+                } else {
+                    alert('Возникла ошибка, позвоните нам и сделайте заказ');
+                }
+            })
+            .catch(error => {
+                // Код, который выполнится при ошибке запроса
+                console.error('Ошибка:', error.message);
+            });
+    }
+
     //Валидация формы заявки
     document.getElementById('button-request').addEventListener('click', function (event) {
         event.preventDefault(); // Предотвращение отправки формы
@@ -265,57 +385,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var tenantEmailError = document.getElementById('mail-error');
         // console.log(carListError.innerHTML);
         //console.log(startDateInput.value);
-        function RequestFormSend (){
-            var data = {
-                name: tenantName.value,
-                car_type: carList.options[carList.selectedIndex].text,
-                /*start_date: startDateInput.selectedDates[0],
-                end_date: endDateInput.selectedDates[0],*/
-                start_date: startDateInput.value,
-                end_date: endDateInput.value,
-                point: inputPoint.options[inputPoint.selectedIndex].text,
+        function RequestFormSend() {
+            var formData = new URLSearchParams();
+            formData.append('name', tenantName.value);
+            formData.append('car_type', carList.options[carList.selectedIndex].text);
+            formData.append('start_date', startDateInput.value);
+            formData.append('end_date', endDateInput.value);
+            formData.append('point', inputPoint.options[inputPoint.selectedIndex].text);
+            formData.append('tenant_phone', tenantTel.value);
+            formData.append('tenant_email', tenantEmail.value);
+            formData.append('tenant_message', tenantMessage && tenantMessage.value !== "" ? tenantMessage.value : 'Нет сообщения');
 
-                tenant_phone: tenantTel.value,
-                tenant_email: tenantEmail.value,
-                tenant_message: tenantMessage && tenantMessage.value !== "" ? tenantMessage.value : 'Нет сообщения',
-                // tenant_message: tenantMessage,
-
-            };
-            // Опции запроса
-            var requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json' // Устанавливаем заголовок для правильной обработки данных на сервере
-                },
-                body: JSON.stringify(data) // Преобразуем данные в JSON и отправляем их в теле запроса
-            };
-            // Отправляем запрос
-            fetch('https://testologia.site/checkout', requestOptions)
-                .then(response => {
-                    // Проверяем статус ответа
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); // Преобразуем ответ в JSON
-                })
-                .then(response => {
-                    // Код, который выполнится при успешном выполнении запроса
-                    if (response.success) {
-                      //  loader.style.display = 'none'; // убираем loader
-
-
-
-                        // Добавление блока с успешным сообщением
-                        ResponseElement('form');
-                        alert('Форма отправлена');
-                    } else {
-                        alert('Возникла ошибка при оформлении заказа, позвоните нам и сделайте заказ');
-                    }
-                })
-                .catch(error => {
-                    // Код, который выполнится при ошибке запроса
-                    console.error('Ошибка:', error.message);
-                });
+            sendFormData(formData, 'form', 'Форма отправлена', 'form');
         }
 
         resetModalFormError();
@@ -371,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // Проверка условия валидации для всех полей
         if ( errorFlag === 7 ) {
-            alert('Форма заполнена!');
+            //alert('Форма заполнена!');
             RequestFormSend();
         }
 
@@ -392,47 +473,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var telError = document.getElementById('tel-error');
         var errorFlag=2;
 
-        function CallFormSend(){
-            var data = {
-                name: nameInput.value,
-                phone: telInput.value,
-            }
-            // Опции запроса
-            var requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json' // Устанавливаем заголовок для правильной обработки данных на сервере
-                },
-                body: JSON.stringify(data) // Преобразуем данные в JSON и отправляем их в теле запроса
-            };
-            // Отправляем запрос
-            fetch('https://testologia.site/checkout', requestOptions)
-                .then(response => {
-                    // Проверяем статус ответа
-                    if (!response.ok) {
-                        throw new Error('Сеть не доступна! Проверьте интернет-соединение.');
-                    }
-                    return response.json(); // Преобразуем ответ в JSON
-                })
-                .then(response => {
-                    // Код, который выполнится при успешном выполнении запроса
-                    if (response.success) {
-                        //  loader.style.display = 'none'; // убираем loader
+        function CallFormSend() {
+            var formData = new URLSearchParams();
+            formData.append('name', nameInput.value);
+            formData.append('phone', telInput.value);
 
-
-
-                        // Добавление блока с успешным сообщением
-                        ResponseElement ('form-calling');
-                        alert('Форма обратного звонка отправлена');
-                    } else {
-                        alert('Возникла ошибка при отправке, позвоните нам и сделайте заказ');
-                    }
-                })
-                .catch(error => {
-                    // Код, который выполнится при ошибке запроса
-                    console.error('Ошибка:', error.message);
-                });
+            sendFormData(formData, 'form-calling', 'Форма обратного звонка отправлена', 'form-calling');
         }
+
 
 
         // Сброс предыдущих ошибок
@@ -461,28 +509,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    //
     // Событие при закрытии модального окна заказа обратного звонка
-    document.getElementById('callingModal').addEventListener('hidden.bs.modal', function () {
-       // clearCallingForm();
-       // clearFields('form-calling');
-        clearForm('form-calling');
-      //  resetModalFormError();
-        resetModalFormError();
-    });
-    // Событие при закрытии модального окна заказа машины
-    document.getElementById('btn-form').addEventListener('click', function (event) {
-
-        clearForm('form');
-        resetModalFormError();
-        // Находим все элементы с классом flatpickr-input
-        var flatpickrInputs = document.querySelectorAll('.flatpickr-input');
-
-// Проходим по каждому элементу и вызываем метод clear() для каждого экземпляра Flatpickr
-        flatpickrInputs.forEach(function (input) {
-            input._flatpickr.clear();
+    var callingModal = document.getElementById('callingModal');
+    if (callingModal) {
+        callingModal.addEventListener('hidden.bs.modal', function () {
+            clearForm('form-calling');
+            resetModalFormError();
         });
+    }
 
-    });
+// Событие при закрытии модального окна заказа машины
+    var btnForm = document.getElementById('btn-form');
+    if (btnForm) {
+        btnForm.addEventListener('click', function (event) {
+            clearForm('form');
+            resetModalFormError();
+
+            // Находим все элементы с классом flatpickr-input
+            var flatpickrInputs = document.querySelectorAll('.flatpickr-input');
+
+            // Проходим по каждому элементу и вызываем метод clear() для каждого экземпляра Flatpickr
+            flatpickrInputs.forEach(function (input) {
+                if (input._flatpickr && typeof input._flatpickr.clear === 'function') {
+                    input._flatpickr.clear();
+                }
+            });
+        });
+    }
+
+    //
 
 
 
@@ -510,9 +566,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-});
+    });
 
-new WOW().init();
+    new WOW().init();
 
 
 
